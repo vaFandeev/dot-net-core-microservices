@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  cataloguedb:
+    image: mongo
+    #ports:
+    #  - 27017:27017
+    #volumes:
+    #  - mongo_data:/data/db
+  catalogue.api:
+    image: ${DOCKER_REGISTRY-}catalogueapi
+    build:
+      context: .
+      dockerfile: Services/Catalogue/Catalogue.API/Dockerfile
+
+volumes:
+  mongo_data:
